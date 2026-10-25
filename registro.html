@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UCA TICKETS | Registro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="auth">
+
+    <!-- Panel de marca: mantiene la misma cohesión visual en escritorio -->
+    <aside class="brand-panel" aria-hidden="true">
+      <div class="logo">
+        <span class="logo-mark">U</span>
+        <span class="logo-text">UCA TICKETS</span>
+      </div>
+      <div class="tagline-box">
+        <p class="tagline">Vive la música en vivo.</p>
+        <p class="tagline-sub">Compra tus boletos en pocos pasos y lleva tus entradas siempre contigo.</p>
+      </div>
+    </aside>
+
+    <section class="form-panel">
+      <!-- Logo superior: se ve en móvil y tablet -->
+      <div class="logo logo--top">
+        <span class="logo-mark" aria-hidden="true">U</span>
+        <span class="logo-text">UCA TICKETS</span>
+      </div>
+
+      <div class="card">
+
+        <!-- ========== PANTALLA DE REGISTRO ========== -->
+        <section aria-labelledby="t-registro">
+          <header class="view-header">
+            <h1 id="t-registro">Crea tu cuenta</h1>
+            <p>Regístrate para comprar boletos o publicar tus eventos.</p>
+          </header>
+
+          <form id="form-registro" novalidate>
+            
+            <!-- Tipo de cuenta (Chips) -->
+            <fieldset class="chips">
+              <legend>Tipo de cuenta</legend>
+              <div class="chips-row">
+                <label class="chip">
+                  <input type="radio" name="tipo-cuenta" value="cliente" checked>
+                  <span>Cliente</span>
+                </label>
+                <label class="chip">
+                  <input type="radio" name="tipo-cuenta" value="organizador">
+                  <span>Organizador</span>
+                </label>
+                <label class="chip">
+                  <input type="radio" name="tipo-cuenta" value="administrador">
+                  <span>Administrador</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="field">
+              <label for="reg-nombre">Nombre completo</label>
+              <input id="reg-nombre" name="nombre" type="text" autocomplete="name"
+                     placeholder="Tu nombre" aria-describedby="reg-nombre-error">
+              <p class="error" id="reg-nombre-error" aria-live="polite"></p>
+            </div>
+
+            <div class="field">
+              <label for="reg-email">Correo electrónico</label>
+              <input id="reg-email" name="email" type="email" autocomplete="email"
+                     placeholder="tucorreo@ejemplo.com" aria-describedby="reg-email-error">
+              <p class="error" id="reg-email-error" aria-live="polite"></p>
+            </div>
+
+            <div class="field">
+              <label for="reg-pass">Contraseña</label>
+              <div class="input-wrap">
+                <input id="reg-pass" name="password" type="password" autocomplete="new-password"
+                       placeholder="Mínimo 8 caracteres" aria-describedby="reg-pass-error">
+                <button type="button" class="toggle-pass" data-target="reg-pass"
+                        aria-label="Mostrar contraseña" aria-pressed="false">Mostrar</button>
+              </div>
+              <p class="error" id="reg-pass-error" aria-live="polite"></p>
+            </div>
+
+            <button class="btn btn--primary" type="submit">Crear cuenta</button>
+            <p class="status" aria-live="polite"></p>
+          </form>
+
+          <p class="switch">¿Ya tienes cuenta? <a class="link" href="index.html">Inicia sesión</a></p>
+        </section>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="registro-script.js"></script>
+</body>
+</html>
