@@ -1,0 +1,398 @@
+/* ===========================================================
+   UCA TICKETS - Pantalla de inicio de sesión
+   Mobile first: base = móvil (375px)
+   Tablet  >= 768px
+   Escritorio >= 1024px
+   =========================================================== */
+
+/* ---------- Variables (las mismas del diseño en Figma) ---------- */
+:root {
+  /* Colores */
+  --bg-base: #0B0B14;
+  --bg-surface: #16162A;
+  --border: #2A2A44;
+  --text: #F5F5FA;
+  --text-2: #A1A1B5;
+  --primary: #7C3AED;
+  --primary-700: #6D28D9;
+  --accent: #EC4899;
+  --success: #22C55E;
+  --error-text: #F87171;
+  --error: #EF4444;
+
+  /* Espaciado (sistema de 8px) */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+
+  /* Radios */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+* { margin: 0; }
+
+[hidden] { display: none !important; }
+
+body {
+  min-height: 100vh;
+  background: var(--bg-base);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a, button, input { font-family: inherit; }
+
+/* ---------- Estructura (móvil) ---------- */
+.auth {
+  min-height: 100vh;
+  display: grid;
+}
+
+.brand-panel { display: none; }
+
+.form-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-5);
+  padding: var(--space-6) var(--space-3) var(--space-4);
+}
+
+.card {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ---------- Logo ---------- */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.logo-mark {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(90deg, #7C3AED, #EC4899);
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- Encabezado de cada vista ---------- */
+.view-header { margin-bottom: var(--space-3); }
+
+.view-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--space-1);
+}
+
+.view-header h1:focus { outline: none; }
+
+.view-header p {
+  color: var(--text-2);
+  font-size: 16px;
+}
+
+/* ---------- Formulario ---------- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+label,
+legend {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  height: 48px;
+  padding: 0 var(--space-2);
+  background: var(--bg-surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 16px; /* 16px evita el zoom automático en iPhone */
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input::placeholder { color: var(--text-2); opacity: 1; }
+
+input:focus-visible {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.45);
+}
+
+input[aria-invalid="true"] { border-color: var(--error); }
+
+.error {
+  min-height: 0;
+  color: var(--error-text);
+  font-size: 13px;
+}
+
+.error:empty { display: none; }
+
+/* Campo de contraseña con botón Mostrar/Ocultar */
+.input-wrap { position: relative; }
+
+.input-wrap input { padding-right: 88px; }
+
+.toggle-pass {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+  padding: var(--space-1) 10px;
+  background: none;
+  border: 0;
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.toggle-pass:hover { text-decoration: underline; }
+
+/* ---------- Enlaces ---------- */
+.link {
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.link:hover { text-decoration: underline; }
+
+.link:focus-visible,
+.toggle-pass:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.link--end { align-self: flex-end; }
+
+/* ---------- Botón principal ---------- */
+.btn {
+  width: 100%;
+  height: 48px;
+  border: 0;
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.btn--primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn--primary:hover { background: var(--primary-700); }
+.btn--primary:active { transform: scale(0.99); }
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.btn:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+/* ---------- Mensajes de estado y pie ---------- */
+.status {
+  min-height: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-2);
+}
+
+.status.ok { color: var(--success); }
+.status.fail { color: var(--error-text); }
+
+.switch {
+  margin-top: var(--space-3);
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-2);
+}
+
+/* ---------- Chips de tipo de cuenta (registro) ---------- */
+.chips {
+  border: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.chips legend { margin-bottom: var(--space-1); }
+
+.chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.chip { position: relative; cursor: pointer; }
+
+.chip input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  cursor: pointer;
+}
+
+.chip span {
+  display: inline-block;
+  padding: 10px var(--space-2);
+  background: var(--bg-surface);
+  color: var(--text-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.chip input:checked + span {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.chip input:focus-visible + span {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ===========================================================
+   TABLET (768px en adelante): tarjeta centrada
+   =========================================================== */
+@media (min-width: 768px) {
+  .form-panel {
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+    padding: var(--space-5);
+  }
+
+  .logo--top { align-self: center; }
+
+  .card {
+    max-width: 480px;
+    padding: var(--space-5);
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+  }
+
+  .view-header h1 { font-size: 32px; }
+
+  /* Dentro de la tarjeta, los campos usan el fondo base para que se distingan */
+  .card input[type="text"],
+  .card input[type="email"],
+  .card input[type="password"],
+  .card .chip span {
+    background: var(--bg-base);
+  }
+}
+
+/* ===========================================================
+   ESCRITORIO (1024px en adelante): panel de marca + formulario
+   =========================================================== */
+@media (min-width: 1024px) {
+  .auth { grid-template-columns: minmax(420px, 44%) 1fr; }
+
+  .brand-panel {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--space-6);
+    background: linear-gradient(135deg, #5B21B6, #BE185D);
+    color: #fff;
+  }
+
+  .tagline {
+    font-size: clamp(36px, 3.4vw, 48px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: var(--space-2);
+  }
+
+  .tagline-sub {
+    font-size: 20px;
+    line-height: 1.5;
+    max-width: 30ch;
+  }
+
+  .logo--top { display: none; }
+
+  .form-panel { min-height: 100vh; }
+
+  .card {
+    max-width: 400px;
+    padding: 0;
+    background: none;
+    border: 0;
+    border-radius: 0;
+  }
+
+  /* En escritorio el formulario va directo sobre el fondo */
+  .card input[type="text"],
+  .card input[type="email"],
+  .card input[type="password"],
+  .card .chip span {
+    background: var(--bg-surface);
+  }
+}
+
+/* ---------- Accesibilidad: menos movimiento ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
