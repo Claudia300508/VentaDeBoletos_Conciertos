@@ -1,9 +1,4 @@
-/* ===========================================================
-   UCA TICKETS - Pantalla de inicio de sesión
-   Valida el formulario y simula el envío. NO hay servidor: la
-   autenticación real se conectaría más adelante en las funciones
-   marcadas con "AQUÍ IRÍA".
-   =========================================================== */
+
 (function () {
   'use strict';
 
@@ -44,12 +39,12 @@
     }
   }
 
-  // Simula una petición al servidor (AQUÍ IRÍA el fetch real)
+  // Simula una petición al servidor
   function fakeRequest(ms) {
     return new Promise(function (resolve) { setTimeout(resolve, ms); });
   }
 
-  /* ---------- Validaciones ---------- */
+  /*  Validaciones  */
   function checkEmail(input) {
     var value = input.value.trim();
     if (!value) { setError(input, 'Escribe tu correo electrónico.'); return false; }
@@ -68,12 +63,12 @@
     return form.querySelector('[aria-invalid="true"]');
   }
 
-  /* ---------- Limpiar el error al escribir ---------- */
+  /* Limpiar el error al escribir  */
   document.querySelectorAll('input').forEach(function (input) {
     input.addEventListener('input', function () { clearError(input); });
   });
 
-  /* ---------- Botón Mostrar / Ocultar contraseña ---------- */
+  /*Botón Mostrar / Ocultar contraseña  */
   document.querySelectorAll('.toggle-pass').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var input = document.getElementById(btn.dataset.target);
@@ -85,15 +80,11 @@
     });
   });
 
-  /* ---------- Enlaces a otras pantallas (todavía no existen) ----------
-     Los enlaces funcionan (se pueden presionar) pero no llevan a ningún lado.
-     Cuando tu compañera tenga lista su pantalla, solo hay que descomentar la
-     línea de "location.href" y poner el nombre real del archivo. */
+  /* Enlaces a otras pantallas */
   var linkRegistro = document.getElementById('link-registro');
   linkRegistro.addEventListener('click', function (e) {
     e.preventDefault();
-    // AQUÍ IRÍA la redirección a la pantalla de registro:
-    // location.href = 'registro.html';
+    location.href = 'registro.html';
   });
 
   var linkRecuperar = document.getElementById('link-recuperar');
@@ -103,7 +94,7 @@
     // location.href = 'recuperar.html';
   });
 
-  /* ---------- Inicio de sesión ---------- */
+  /*Inicio de sesión  */
   var formLogin = document.getElementById('form-login');
   formLogin.addEventListener('submit', function (e) {
     e.preventDefault();
